@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+    pgsql:
+        restart: always
+        image: postgres:${PGSQL_VERSION}
+        container_name: pgsql
+        volumes:
+            - data:/var/lib/postgresql/data
+        ports:
+            - 0.0.0.0:5432:5432
+        environment:
+            - POSTGRES_USER=${PGSQL_USER}
+            - POSTGRES_PASSWORD=${PGSQL_PASSWORD}
+
+volumes:
+    data:
+        driver: local
+
